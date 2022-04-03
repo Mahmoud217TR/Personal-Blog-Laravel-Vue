@@ -41,4 +41,44 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $attributes = [
+		'role' => 0
+	];
+
+    public static function roles(){
+        return [
+            0 => 'user',
+            1 => 'editor',
+            2 => 'admin',
+        ];
+    }
+
+    public function getRoleAttribute($attribute){
+        return $this->roles()[$attribute];
+    }
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    
+    }
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
+    public function votes(){
+        return $this->belongsToMany(Post::class,'votes')->withPivot('upvote');
+    }
+
+    public function isUser(){
+        return $this->role == 'user';
+    }
+
+    public function isEditor(){
+        return $this->role == 'editor';
+    }
+
+    public function isAdmin(){
+        return $this->role == 'admin';
+    }
 }
