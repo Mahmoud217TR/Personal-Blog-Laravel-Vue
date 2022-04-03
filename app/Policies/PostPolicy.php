@@ -10,15 +10,23 @@ class PostPolicy
 {
     use HandlesAuthorization;
 
+    private function isAuthorized($user){
+        return ($user->isAdmin() || $user->isEditor());
+    }
+
+    private function isAuthorizedOwner($user, $post){
+        $this->isAuthorized($user) && $user->isOwnerOf($post);
+    }
+
     /**
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(?User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -28,9 +36,15 @@ class PostPolicy
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Post $post)
+    public function view(?User $user, Post $post)
     {
-        //
+        if($post->isDraft()){
+            return $this->isAuthorizedOwner($user, $post);
+        }else if($post->isArchived()){
+            return $this->isAuthorized($user);
+        }
+
+        return true;
     }
 
     /**
@@ -41,7 +55,7 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        //
+        return $this->isAuthorized($user);
     }
 
     /**
@@ -53,7 +67,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        //
+        return $this->$this->isAuthorizedOwner($user, $post);
     }
 
     /**
@@ -65,7 +79,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        //
+        return ($this->isAuthorizedOwner($user, $post) || $user->isAdmin());
     }
 
     /**

@@ -10,15 +10,23 @@ class CommentPolicy
 {
     use HandlesAuthorization;
 
+    private function isAuthorized($user){
+        return ($user->isAdmin() || $user->isEditor());
+    }
+
+    private function postIsnotArchived($comment){
+        return !$comment->post->isArchived();
+    }
+
     /**
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(?User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -28,9 +36,12 @@ class CommentPolicy
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Comment $comment)
+    public function view(?User $user, Comment $comment)
     {
-        //
+        if(!$this->isAuthorized($user)){
+            return $this->postIsnotArchived($comment);
+        }
+        return true;
     }
 
     /**
@@ -41,7 +52,7 @@ class CommentPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +64,7 @@ class CommentPolicy
      */
     public function update(User $user, Comment $comment)
     {
-        //
+        return $user->isOwnerOf($comment);
     }
 
     /**
@@ -65,7 +76,7 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment)
     {
-        //
+        return $user->isOwnerOf($comment) || $user->isAdmin();
     }
 
     /**
