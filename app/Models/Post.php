@@ -48,4 +48,8 @@ class Post extends Model
     public function isArchived(){
         return $this->state == 'archived';
     }
+
+    public function scopePublished($query){
+        return $query->where('state',1);
+    }
 }

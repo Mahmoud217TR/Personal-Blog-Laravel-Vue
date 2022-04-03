@@ -6,3 +6,73 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+html, body, #app{
+    height: 100%;
+}
+
+.app-grid{
+    display: grid;
+    grid-template-rows: 10% 90%;
+    grid-template-columns: 30% 70%;
+    grid-template-areas: 'nav nav'
+                         'saidebar main';
+}
+
+.app-grid-without-sidebar{
+    display: grid;
+    grid-template-rows: 10% 90%;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'nav'
+                         'main';
+}
+
+nav{
+    grid-area: nav;
+}
+
+main{
+    grid-area: main;
+    overflow: auto;
+}
+
+aside{
+    grid-area: saidebar;
+    background-color: $vanadyl-blue;
+    overflow: auto;
+}
+
+.bg-naval{
+    background-color: $naval;
+}
+
+.bg-seabrook{
+    background-color: $seabrook;
+}
+
+.bg-vanadyl-blue{
+    background-color: $vanadyl-blue;
+}
+
+.hr-x2{
+    height: 2px!important;
+}
+
+.truncate-5-lines{
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+// mid
+@media (max-width: 768px){
+    .app-grid{
+        display: grid;
+        grid-template-rows: 15% 30% 55%;
+        grid-template-columns: 1fr;
+        grid-template-areas: 'nav nav'
+                             'saidebar saidebar'
+                             'main main';
+    }
+}

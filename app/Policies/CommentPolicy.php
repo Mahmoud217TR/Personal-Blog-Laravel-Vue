@@ -10,10 +10,6 @@ class CommentPolicy
 {
     use HandlesAuthorization;
 
-    private function isAuthorized($user){
-        return ($user->isAdmin() || $user->isEditor());
-    }
-
     private function postIsnotArchived($comment){
         return !$comment->post->isArchived();
     }
@@ -38,7 +34,7 @@ class CommentPolicy
      */
     public function view(?User $user, Comment $comment)
     {
-        if(!$this->isAuthorized($user)){
+        if(!$user->isAdmin()){
             return $this->postIsnotArchived($comment);
         }
         return true;

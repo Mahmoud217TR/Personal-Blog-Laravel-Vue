@@ -49,8 +49,7 @@ class User extends Authenticatable
     public static function roles(){
         return [
             0 => 'user',
-            1 => 'editor',
-            2 => 'admin',
+            1 => 'admin',
         ];
     }
 
@@ -72,10 +71,6 @@ class User extends Authenticatable
 
     public function isUser(){
         return $this->role == 'user';
-    }
-
-    public function isEditor(){
-        return $this->role == 'editor';
     }
 
     public function isAdmin(){

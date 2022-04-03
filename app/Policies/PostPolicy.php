@@ -10,13 +10,6 @@ class PostPolicy
 {
     use HandlesAuthorization;
 
-    private function isAuthorized($user){
-        return ($user->isAdmin() || $user->isEditor());
-    }
-
-    private function isAuthorizedOwner($user, $post){
-        $this->isAuthorized($user) && $user->isOwnerOf($post);
-    }
 
     /**
      * Determine whether the user can view any models.
@@ -38,13 +31,11 @@ class PostPolicy
      */
     public function view(?User $user, Post $post)
     {
-        if($post->isDraft()){
-            return $this->isAuthorizedOwner($user, $post);
-        }else if($post->isArchived()){
-            return $this->isAuthorized($user);
+        if($post->isPublished()){
+            return true;
         }
 
-        return true;
+        return $user->isAdmin();
     }
 
     /**
@@ -55,7 +46,7 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        return $this->isAuthorized($user);
+        return $user->isAdmin();
     }
 
     /**
@@ -67,7 +58,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return $this->$this->isAuthorizedOwner($user, $post);
+        return $user->isAdmin();
     }
 
     /**
@@ -79,7 +70,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        return ($this->isAuthorizedOwner($user, $post) || $user->isAdmin());
+        return $user->isAdmin();
     }
 
     /**

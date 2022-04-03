@@ -2,21 +2,15 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+    <div class="row">
+        <div class="col px-5">
+            @forelse ($posts as $post)
+                @include('posts.display',$post)
+            @empty
+                <div class="display-3">
+                    No Posts yet.
                 </div>
-            </div>
+            @endforelse
         </div>
     </div>
 </div>

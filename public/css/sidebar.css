@@ -11286,37 +11286,24 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-html, body, #app {
+html {
+  height: 100vh;
+}
+
+body {
   height: 100%;
 }
 
-.app-grid {
-  display: grid;
-  grid-template-rows: 10% 90%;
-  grid-template-columns: 30% 70%;
-  grid-template-areas: "nav nav" "saidebar main";
-}
-
-.app-grid-without-sidebar {
-  display: grid;
-  grid-template-rows: 10% 90%;
-  grid-template-columns: 1fr;
-  grid-template-areas: "nav" "main";
+#app {
+  height: 100%;
 }
 
 nav {
-  grid-area: nav;
+  min-height: 10%;
 }
 
 main {
-  grid-area: main;
-  overflow: auto;
-}
-
-aside {
-  grid-area: saidebar;
-  background-color: #0097e6;
-  overflow: auto;
+  min-height: 90%;
 }
 
 .bg-naval {
@@ -11335,18 +11322,6 @@ aside {
   height: 2px !important;
 }
 
-.truncate-5-lines {
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-@media (max-width: 768px) {
-  .app-grid {
-    display: grid;
-    grid-template-rows: 15% 30% 55%;
-    grid-template-columns: 1fr;
-    grid-template-areas: "nav nav" "saidebar saidebar" "main main";
-  }
+.sidebar {
+  background-color: #0097e6;
 }
