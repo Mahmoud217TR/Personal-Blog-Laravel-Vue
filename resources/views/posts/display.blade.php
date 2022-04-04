@@ -21,13 +21,8 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-10">
-                <a href="#" class="btn btn-primary mx-2">View</a>
-                @can('update',$post)
-                    <a href="#" class="btn btn-success mx-2">Edit</a>
-                @endcan
-                @can('delete',$post)
-                    <a href="#" class="btn btn-danger mx-2">Delete</a>
-                @endcan
+                <a href="{{ route('post.show',$post) }}" class="btn btn-primary mx-2">View</a>
+                @include('posts.controls')
             </div>
         </div>
     </div>

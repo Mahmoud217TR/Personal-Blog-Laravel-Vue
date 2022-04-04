@@ -49,6 +49,10 @@ class Post extends Model
         return $this->state == 'archived';
     }
 
+    public function isModified(){
+        return $this->created_at != $this->updated_at;
+    }
+
     public function scopePublished($query){
         return $query->where('state',1);
     }

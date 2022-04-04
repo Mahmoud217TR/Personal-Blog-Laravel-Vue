@@ -11342,6 +11342,11 @@ aside {
   overflow: hidden;
 }
 
+textarea {
+  resize: none;
+  background-color: #fff;
+}
+
 @media (max-width: 768px) {
   .app-grid {
     display: grid;

@@ -22,7 +22,7 @@
     @yield('head')
 </head>
 <body>
-    <div id="app" class="app-grid">
+    <div id="app" class="@auth app-grid @else app-grid-without-sidebar  @endauth">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
