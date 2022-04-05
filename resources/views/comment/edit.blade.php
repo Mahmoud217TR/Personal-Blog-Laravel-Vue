@@ -9,7 +9,12 @@
                 @csrf
                 @method('PATCH')
                 <label for="content">Edit your Comment:</label>
-                <textarea class='form-control' name="content" id="content" cols="30" rows="4">{{ $comment->content??old('content') }}</textarea>
+                <textarea class='form-control' name="content" id="content" cols="30" rows="4" required>{{ $comment->content??old('content') }}</textarea>
+                @error('content')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
                 <button class="btn btn-success mt-2">Update</button>
             </form>
         </div>

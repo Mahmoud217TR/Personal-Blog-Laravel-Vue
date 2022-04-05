@@ -1,5 +1,5 @@
 @can('update',$post)
-    <a href="#" class="btn btn-success me-2">Edit</a>
+    <a href="{{ route('post.edit',$post) }}" class="btn btn-success me-2">Edit</a>
 @endcan
 @can('delete',$post)
     <remove text='Delete' title='Deleting Post'

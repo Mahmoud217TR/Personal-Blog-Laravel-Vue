@@ -7,9 +7,46 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    private function getValidatedData(){
+        return request()->validate([
+            'title' => 'required|string|max:100',
+            'content' => 'required|string',
+        ]);
+    }
+
     public function show(Post $post){
         $post->with('comments','comments.users','user');
-        return view('posts.show',compact('post'));
+        return view('post.show',compact('post'));
+    }
+
+    public function create(){
+        $this->authorize('create',Post::class);
+        return view('post.create',['post'=>new Post]);
+    }
+
+    public function store(){
+        $this->authorize('create',Post::class);
+        $data = $this->getValidatedData();
+        $post = Post::create([
+            'title' => $data['title'],
+            'content' => $data['content'],
+            'user_id' => auth()->id(),
+        ]);
+
+        return redirect()->route('post.show',$post);
+    }
+
+
+    public function edit(Post $post){
+        $post->with('user');
+        $this->authorize('update',$post);
+        return view('post.edit',compact('post'));
+    }
+
+    public function update(Post $post){
+        $this->authorize('update',$post);
+        $post->update( $this->getValidatedData());
+        return redirect()->route('post.show',$post);
     }
 
     public function destroy(Post $post){

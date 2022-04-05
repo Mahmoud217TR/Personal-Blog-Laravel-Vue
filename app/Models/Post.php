@@ -9,6 +9,12 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'content',
+        'user_id',
+    ];
+
     protected $attributes = [
         'state' => 0,
     ];

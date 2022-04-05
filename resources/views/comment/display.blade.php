@@ -17,7 +17,7 @@
         </div>
         <div class="row">
             <div class="col-10 offset-1">
-                @include('comments.controls')
+                @include('comment.controls')
             </div>
         </div>
         <div class="row">

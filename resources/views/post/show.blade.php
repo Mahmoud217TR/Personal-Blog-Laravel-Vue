@@ -27,7 +27,7 @@
     </div>
     <div class="row">
         <div class="col-10 offset-1 pt-4">
-            @include('posts.controls')
+            @include('post.controls')
         </div>
     </div>
     <div class="row">
@@ -45,14 +45,14 @@
     <div class="row">
         <div class="col-10 offset-1">
             @auth
-                @include('comments.create')
+                @include('comment.create')
             @else
                 <p><a href="{{ route('login','test') }}">Login</a> to comment on this post.</p>
             @endauth
         </div>
     </div>
     @forelse ($post->comments as $comment)
-        @include('comments.display',$comment)
+        @include('comment.display',$comment)
     @empty
         <div class="display-5 text-center mt-2">
             No Comments yet.
