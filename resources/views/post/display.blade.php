@@ -20,8 +20,8 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-10">
-                <a href="{{ route('post.show',$post) }}" class="btn btn-primary mx-2">View</a>
+            <div class="col-md-10 col-6 justify-content-md-center ps-md-0">
+                <a href="{{ route('post.show',$post) }}" class="btn btn-primary m-2">View</a>
                 @include('post.controls')
             </div>
         </div>

@@ -1,11 +1,11 @@
 <template>
-    <button class="btn btn-danger m-2" @click="open">{{ text }}</button>
+    <button class="btn btn-secondary m-2" @click="open">{{ text }}</button>
     <div class="backdrop" v-if='show' @click.self="close">
-        <div class="remove-modal">
+        <div class="state-modal">
             <p class="h3">{{ title }}</p>
             <p>{{ content }}</p>
             <div class="actions">
-                <button class="btn btn-danger me-2" @click="remove">Remove</button>
+                <button class="btn btn-secondary me-2" @click="archive">Archive</button>
                 <button class="btn btn-dark me-2" @click="close">Cancel</button>
             </div>
         </div>
@@ -14,7 +14,7 @@
 
 <script>
     export default {
-        props:['action','method','text','title','content'],
+        props:['action','method','text','title','content','state'],
         data() {
             return {
                 show: false,
@@ -27,8 +27,8 @@
             close(){
                 this.show = false
             },
-            remove(){
-                axios[this.method](this.action).then(response => {
+            archive(){
+                axios[this.method](this.action,{state:this.state, api:true}).then(response => {
                     window.location.href = response.data;
                 });
             }
@@ -47,7 +47,7 @@
     z-index: 100;
 }
 
-.remove-modal{
+.state-modal{
     position: relative;
     top: 50%;
     left: 50%;

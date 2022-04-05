@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
     private function getValidatedData(){
         return request()->validate([
-            'title' => 'required|string|max:100',
-            'content' => 'required|string',
+            'title' => 'sometimes|string|max:100',
+            'content' => 'sometimes|string',
+            'state' => ['sometimes','string',Rule::in(Post::states())],
         ]);
     }
 
@@ -45,7 +47,10 @@ class PostController extends Controller
 
     public function update(Post $post){
         $this->authorize('update',$post);
-        $post->update( $this->getValidatedData());
+        $post->update($this->getValidatedData());
+        if(request()->has('api')){
+            return route('post.show',$post);
+        }
         return redirect()->route('post.show',$post);
     }
 
