@@ -5,7 +5,7 @@
 <div class="container p-4">
     <div class="row">
         <div class="col-lg-2 col-md-3 col-sm-4 col-5 d-flex align-items-center justify-content-end">
-            <img src="https://via.placeholder.com/75" class="rounded-circle" alt="author">
+            <img src="{{ $post->user->image??asset('images/profile_placehloder.jpg') }}" width="75" height="75" class="rounded-circle" alt="author">
         </div>
         <div class="col p-0 d-flex align-items-center">
             <p class="mb-0 px-2 h1">{{ $post->user->name }}</p>

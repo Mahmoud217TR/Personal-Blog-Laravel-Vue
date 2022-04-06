@@ -2,7 +2,7 @@
     <div class="col-10 offset-1 mt-4">
         <div class="row">
             <div class="col-lg-1 col-md-2 col-sm-3 col-4 d-flex align-items-center">
-                <img src="https://via.placeholder.com/50" class="rounded-circle" alt="author">
+                <img src="{{ $comment->user->image??asset('images/profile_placehloder.jpg') }}" width="50" height="50" class="rounded-circle" alt="author">
             </div>
             <div class="col p-0 d-flex align-items-center">
                 <p class="mb-0 px-2 h3">{{ $comment->user->name }}</p>
