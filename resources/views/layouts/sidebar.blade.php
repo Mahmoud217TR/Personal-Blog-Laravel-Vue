@@ -7,16 +7,16 @@
     </div>
     <ol class="unstyled-list">
       <li>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
       </li>
       <li>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
       </li>
       <li>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
       </li>
       <li>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
       </li>
     </ol>
     <hr class="hr-x2">
@@ -25,22 +25,22 @@
     </div>
     <ol class="unstyled-list">
       <li>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
       </li>
       <li>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
       </li>
       <li>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
       </li>
       <li>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
     </li>
     <li>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
     </li>
     <li>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
     </li>
     </ol>
     <hr class="hr-x2">

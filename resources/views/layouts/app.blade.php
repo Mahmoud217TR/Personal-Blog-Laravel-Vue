@@ -60,7 +60,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Profile</a>
+                                    <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                                     @auth
                                         @if (auth()->user()->isAdmin())
                                             <a class="dropdown-item" href="#">Dashboard</a>

@@ -8,6 +8,11 @@ use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth','admin'])->except('show');
+    }
+
     private function getValidatedData(){
         return request()->validate([
             'title' => 'sometimes|string|max:100',
