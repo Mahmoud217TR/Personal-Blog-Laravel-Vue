@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'image',
     ];
 
     /**
@@ -83,5 +85,13 @@ class User extends Authenticatable
 
     public function isOwnerOf($object){
         return $this->id == $object->user_id;
+    }
+
+    public function scopeUser($query){
+        return $query->where('role',1);
+    }
+
+    public function scopeAdmin($query){
+        return $query->where('role',2);
     }
 }

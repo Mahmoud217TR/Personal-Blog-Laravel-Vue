@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,19 +18,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::updateOrCreate(
-            [
-                'email' => 'admin@users.test'
-            ],
-            [
-                'name' => 'Admin',
-                'email_verified_at' => now(),
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-                'remember_token' => Str::random(10),
-                'role'=> 'admin',
-            ],
-        );
-
-        $this->call(CommentSeeder::class);
+        User::factory()->admin()->create(['email' => 'admin@users.test']);
+        $this->command->info('Admin Created.');
+        User::factory(15)->user()->create();
+        $this->command->info('Users Created.');
+        Post::factory(10)->published()->forExistingAdmin()->has(Comment::factory(3)->forExistingUser())->create();
+        $this->command->info('Posts with Comments Created.');
     }
 }

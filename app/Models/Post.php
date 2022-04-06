@@ -29,6 +29,10 @@ class Post extends Model
         ];
     }
 
+    public static function randomState(){
+        return self::states()[array_rand(self::states())];
+    }
+
     public function state(): Attribute{
         return Attribute::make(
             get: fn ($value) => $this->states()[$value],
