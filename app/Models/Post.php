@@ -23,9 +23,9 @@ class Post extends Model
 
     public static function states(){
         return [
-            0 => 'draft',
-            1 => 'published',
-            2 => 'archived',
+            1 => 'draft',
+            2 => 'published',
+            3 => 'archived',
         ];
     }
 
@@ -64,7 +64,15 @@ class Post extends Model
         return $this->created_at != $this->updated_at;
     }
 
-    public function scopePublished($query){
+    public function scopeDraft($query){
         return $query->where('state',1);
+    }
+
+    public function scopePublished($query){
+        return $query->where('state',2);
+    }
+
+    public function scopeArchived($query){
+        return $query->where('state',3);
     }
 }

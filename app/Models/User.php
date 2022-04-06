@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -48,13 +49,16 @@ class User extends Authenticatable
 
     public static function roles(){
         return [
-            0 => 'user',
-            1 => 'admin',
+            1 => 'user',
+            2 => 'admin',
         ];
     }
 
-    public function getRoleAttribute($attribute){
-        return $this->roles()[$attribute];
+    public function role(): Attribute{
+        return Attribute::make(
+            get: fn ($value) => $this->roles()[$value],
+            set: fn ($value) => array_search($value,$this->roles()),
+        );
     }
 
     public function posts(){
