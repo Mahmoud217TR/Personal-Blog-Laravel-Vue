@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -26,6 +27,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::controller(ProfileController::class)->group(function(){
     Route::get('/profile','edit')->name('profile');
     Route::patch('/profile','update')->name('profile.update');
+});
+Route::controller(AdminController::class)->group(function(){
+    Route::get('/dashboard','index')->name('dashboard');
 });
 Route::resource('post', PostController::class)->except('index');
 Route::resource('comment', CommentController::class)->except('index','show','create');

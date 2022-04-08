@@ -11347,6 +11347,15 @@ textarea {
   background-color: #fff;
 }
 
+.stat {
+  min-height: 200px;
+}
+
+.unstyled-link {
+  text-decoration: none;
+  color: inherit !important;
+}
+
 @media (max-width: 768px) {
   .app-grid {
     display: grid;

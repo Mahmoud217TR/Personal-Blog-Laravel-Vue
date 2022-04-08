@@ -63,7 +63,7 @@
                                     <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                                     @auth
                                         @if (auth()->user()->isAdmin())
-                                            <a class="dropdown-item" href="#">Dashboard</a>
+                                            <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
                                         @endif
                                     @endauth
                                     <hr class="dropdown-divider">
