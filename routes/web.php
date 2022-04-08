@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -23,7 +24,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::controller(HomeController::class)->group(function(){
+    Route::get('/home','index')->name('home');
+    Route::get('/all','all')->name('all');
+    Route::get('/archived','archived')->name('archived');
+    Route::get('/draft','draft')->name('draft');
+});
 Route::controller(ProfileController::class)->group(function(){
     Route::get('/profile','edit')->name('profile');
     Route::patch('/profile','update')->name('profile.update');

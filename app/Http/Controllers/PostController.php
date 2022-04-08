@@ -28,7 +28,9 @@ class PostController extends Controller
 
     public function create(){
         $this->authorize('create',Post::class);
-        return view('post.create',['post'=>new Post]);
+        $post = new Post;
+        $states = Post::states();
+        return view('post.create',compact('post','states'));
     }
 
     public function store(){
@@ -38,16 +40,17 @@ class PostController extends Controller
             'title' => $data['title'],
             'content' => $data['content'],
             'user_id' => auth()->id(),
+            'state' => $data['state'],
         ]);
 
         return redirect()->route('post.show',$post);
     }
 
-
     public function edit(Post $post){
         $post->with('user');
         $this->authorize('update',$post);
-        return view('post.edit',compact('post'));
+        $states = Post::states();
+        return view('post.edit',compact('post','states'));
     }
 
     public function update(Post $post){

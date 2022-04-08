@@ -15,6 +15,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('admin')->except('index');
     }
 
     /**
@@ -25,6 +26,24 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::Published()->with('user')->paginate(8);
+        return view('home',compact('posts'));
+    }
+
+    public function all()
+    {
+        $posts = Post::with('user')->paginate(8);
+        return view('home',compact('posts'));
+    }
+
+    public function archived()
+    {
+        $posts = Post::Archived()->with('user')->paginate(8);
+        return view('home',compact('posts'));
+    }
+
+    public function draft()
+    {
+        $posts = Post::Draft()->with('user')->paginate(8);
         return view('home',compact('posts'));
     }
 }

@@ -18,7 +18,7 @@ class Post extends Model
     ];
 
     protected $attributes = [
-        'state' => 0,
+        'state' => 1,
     ];
 
     public static function states(){

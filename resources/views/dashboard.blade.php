@@ -54,7 +54,10 @@
 </div>
 <div class="row mx-2 mt-4">
     <div class="col-lg my-2">
-        <a href="{{ route('post.create') }}" class="btn btn-primary">Create a new Post</a>
+        <a href="{{ route('post.create') }}" class="btn btn-primary d-block my-2">Create a new Post</a>
+        <a href="{{ route('all') }}" class="btn btn-success d-block my-2">Show all Posts</a>
+        <a href="{{ route('draft') }}" class="btn btn-warning d-block my-2">Show Draft Posts</a>
+        <a href="{{ route('archived') }}" class="btn btn-secondary d-block my-2">Show Archived Posts</a>
     </div>
     <div class="col-lg my-2">
         <p class="h4">Most Popular Posts</p>
