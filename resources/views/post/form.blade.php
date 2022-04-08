@@ -20,7 +20,7 @@
     <label for="state">State</label>
     <select class='form-select' name="state" id="state" required>
         @foreach ($states as $state)
-            <option value="{{ $state }}">{{ Str::title($state) }}</option>
+            <option @selected($state == ($post->state??old('state'))) value="{{ $state }}">{{ Str::title($state) }}</option>
         @endforeach
     </select>
     @error('state')
