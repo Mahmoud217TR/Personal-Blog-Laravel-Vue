@@ -80,6 +80,10 @@ textarea{
     color: inherit!important;
 }
 
+.disabled-btn{
+    cursor: not-allowed;
+}
+
 // mid
 @media (max-width: 768px){
     .app-grid{
