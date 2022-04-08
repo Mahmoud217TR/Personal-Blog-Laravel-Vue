@@ -25,25 +25,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::Published()->with('user')->paginate(8);
+        $posts = Post::Published()->orderBy('created_at','desc')->with('user')->paginate(8);
         return view('home',compact('posts'));
     }
 
     public function all()
     {
-        $posts = Post::with('user')->paginate(8);
+        $posts = Post::orderBy('created_at','desc')->with('user')->paginate(8);
         return view('home',compact('posts'));
     }
 
     public function archived()
     {
-        $posts = Post::Archived()->with('user')->paginate(8);
+        $posts = Post::Archived()->orderBy('created_at','desc')->with('user')->paginate(8);
         return view('home',compact('posts'));
     }
 
     public function draft()
     {
-        $posts = Post::Draft()->with('user')->paginate(8);
+        $posts = Post::Draft()->orderBy('created_at','desc')->with('user')->paginate(8);
         return view('home',compact('posts'));
     }
 }
