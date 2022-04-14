@@ -24,12 +24,6 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
                         ],
                         shouldNotGroupWhenFull: true
                     },
-                    codeBlock: {
-                        languages: [
-                            { language: 'css', label: 'CSS' },
-                            { language: 'html', label: 'HTML' }
-                        ]
-                    }
                 }
             }
         },
