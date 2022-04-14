@@ -15,7 +15,7 @@
             <div class="col-10">
                 <h2 class="h2">{{ $post->title }}</h2>
                 <p class="truncate-5-lines">
-                    {{ $post->content }}
+                    {!! $post->content !!}
                 </p>
             </div>
         </div>

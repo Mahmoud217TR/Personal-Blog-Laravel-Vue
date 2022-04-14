@@ -1,0 +1,1 @@
+<editor input-id='content' input-name='content' data='{{ $comment->content??old('content') }}'></editor>

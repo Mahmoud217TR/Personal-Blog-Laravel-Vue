@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col-10 offset-1 pt-4">
             <p class="d-block mb-0">
-                {{ $post->content }}
+                {!! $post->content !!}
             </p>
         </div>
     </div>

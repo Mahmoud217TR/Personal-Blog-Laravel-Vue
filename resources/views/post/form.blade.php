@@ -9,7 +9,7 @@
 </div>
 <div class="col mb-3">
     <label for="content">Content</label>
-    <textarea class='form-control' name="content" id="content" cols="30" rows="10" required>{{ $post->content??old('content') }}</textarea>
+    <editor input-id='content' input-name='content' data='{{ $post->content??old('content') }}'></editor>
     @error('content')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>

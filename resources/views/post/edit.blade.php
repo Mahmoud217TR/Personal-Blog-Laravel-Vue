@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Edit {{ $post->title }}')
+@section('title','Edit '.$post->title)
 
 @section('content')
 

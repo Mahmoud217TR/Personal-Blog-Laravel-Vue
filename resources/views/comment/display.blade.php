@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-10 offset-1">
                 <p class="text-muted">
-                    {{ $comment->content }}
+                    {!! $comment->content !!}
                 </p>
             </div>
         </div>
