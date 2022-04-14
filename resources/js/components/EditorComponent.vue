@@ -30,6 +30,3 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
     }
 </script>
 
-<style scoped>
-
-</style>
