@@ -27,6 +27,7 @@ This project is a simple CRUD bloger were you have an Admin who can post and use
 * Admin can Create, Update and Delete Posts.
 * Users can Create, Update and Delete **Their Own** Comments.
 * Admin can Update his own Comments and Delete any Comment.
+* CKEditor for Posts & Comments.
 * Users & Admin can Update **their Own** Informations in profile.
 * Admin has a small dashboard.
 
