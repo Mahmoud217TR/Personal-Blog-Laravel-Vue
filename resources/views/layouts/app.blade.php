@@ -60,17 +60,24 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
+                                    <a class="dropdown-item" href="{{ route('profile') }}">
+                                        <i class="bi bi-person-circle me-2"></i>
+                                        <span>Profile</span>
+                                    </a>
                                     @auth
                                         @if (auth()->user()->isAdmin())
-                                            <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+                                            <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                                <i class="bi bi-speedometer2 me-2"></i>
+                                                <span>Dashboard</span>
+                                            </a>
                                         @endif
                                     @endauth
                                     <hr class="dropdown-divider">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <i class="bi bi-power me-2"></i>
+                                        <span>Logout</span>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
