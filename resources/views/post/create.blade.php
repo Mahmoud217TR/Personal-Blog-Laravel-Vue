@@ -16,7 +16,10 @@
                     @csrf
                     @include('post.form')
                     <div class="col mb-3">
-                        <button class="btn btn-primary">Submit</button>
+                        <button class="btn btn-primary">
+                            <i class="bi bi-clipboard-check-fill me-1"></i>
+                            <span>Submit</span>
+                        </button>
                     </div>
                 </form>
             </div>

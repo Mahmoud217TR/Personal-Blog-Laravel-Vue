@@ -17,7 +17,10 @@
                     @method('PATCH')
                     @include('post.form')
                     <div class="col mb-3">
-                        <button class="btn btn-success">Update</button>
+                        <button class="btn btn-success">
+                            <i class="bi bi-clipboard-check-fill me-1"></i>
+                            <span>Update</span>
+                        </button>
                     </div>
                 </form>
             </div>

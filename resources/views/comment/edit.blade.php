@@ -15,7 +15,10 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-                <button class="btn btn-success mt-2">Update</button>
+                <button class="btn btn-success mt-2">
+                    <i class="bi bi-clipboard-check-fill me-1"></i>
+                    <span>Update</span>
+                </button>
             </form>
         </div>
     </div>

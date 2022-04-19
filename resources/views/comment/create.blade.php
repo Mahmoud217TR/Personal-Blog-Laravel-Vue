@@ -8,5 +8,8 @@
             <strong>{{ $message }}</strong>
         </span>
     @enderror
-    <button class="btn btn-primary mt-2">Comment</button>
+    <button class="btn btn-primary mt-2">
+        <i class="bi bi-chat-fill me-1"></i>
+        <span>Comment</span>
+    </button>
 </form>
