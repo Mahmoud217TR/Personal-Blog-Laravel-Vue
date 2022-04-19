@@ -17,11 +17,13 @@
         </div>
         <div class="row">
             <div class="col-10 offset-1">
+                @include('comment.interactions')
                 @include('comment.controls')
             </div>
         </div>
         <div class="row">
             <div class="col-10 offset-1">
+                <p class="mt-1 mb-0"> {{ $comment->likers->count() }} @choice('Like|Likes',$comment->likers->count()) </p>
                 <p class="text-muted mb-0 mt-1">
                     <small>Posted at: {{ $comment->created_at }}</small>
                     <br>

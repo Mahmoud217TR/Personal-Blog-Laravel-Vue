@@ -1,5 +1,5 @@
 <template>
-    <button class="btn btn-danger m-2" @click="open">{{ text }}</button>
+    <button class="btn btn-danger me-2" :class="hideButton?'d-none':'d-inline'" :id='id' @click="open">{{ text }}</button>
     <div class="backdrop" v-if='show' @click.self="close">
         <div class="remove-modal">
             <p class="h3">{{ title }}</p>
@@ -14,7 +14,7 @@
 
 <script>
     export default {
-        props:['action','method','text','title','content'],
+        props:['action','method','text','title','content', 'id','hideButton'],
         data() {
             return {
                 show: false,

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MarkableController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -30,12 +31,21 @@ Route::controller(HomeController::class)->group(function(){
     Route::get('/archived','archived')->name('archived');
     Route::get('/draft','draft')->name('draft');
 });
+
 Route::controller(ProfileController::class)->group(function(){
     Route::get('/profile','edit')->name('profile');
     Route::patch('/profile','update')->name('profile.update');
 });
+
 Route::controller(AdminController::class)->group(function(){
     Route::get('/dashboard','index')->name('dashboard');
 });
+
 Route::resource('post', PostController::class)->except('index');
+
 Route::resource('comment', CommentController::class)->except('index','show','create');
+
+Route::controller(MarkableController::class)->prefix('markables/')->group(function(){
+    Route::post('like', 'toggleLike')->name('like.toggle');
+    Route::post('favorite', 'toggleFavorite')->name('favorite.toggle');
+});

@@ -26,12 +26,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-10 offset-1 pt-4">
+        <div class="col-10 d-flex offset-1 pt-4">
+            @include('post.interactions')
             @include('post.controls')
         </div>
     </div>
     <div class="row">
         <div class="col-10 offset-1 pt-4">
+            <p> {{ $post->likers->count() }} @choice('Like|Likes',$post->likers->count()) </p>
             <p class="text-muted mb-0">
                 <small>Posted at: {{ $post->created_at }}</small>
                 <br>

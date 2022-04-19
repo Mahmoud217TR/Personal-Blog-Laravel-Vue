@@ -10,4 +10,5 @@ let app=createApp({}).use(CKEditor)
 app.component('remove', require('./components/RemoveComponent.vue').default);
 app.component('state', require('./components/StateComponent.vue').default);
 app.component('editor', require('./components/EditorComponent.vue').default);
+app.component('markable', require('./components/MarkableComponent.vue').default);
 app.mount("#app");

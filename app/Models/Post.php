@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Maize\Markable\Markable;
+use Maize\Markable\Models\Like;
+use Maize\Markable\Models\Favorite;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Markable;
 
     protected $fillable = [
         'title',
@@ -17,9 +20,14 @@ class Post extends Model
         'user_id',
     ];
 
+    protected static $marks = [
+        Like::class,
+        Favorite::class,
+    ];
+
     protected $attributes = [
         'state' => 1,
-    ];
+    ]; 
 
     public static function states(){
         return [
@@ -66,6 +74,14 @@ class Post extends Model
 
     public function isModified(){
         return $this->created_at != $this->updated_at;
+    }
+
+    public function isLikedBy(User $user){
+        return Like::has($this, $user);
+    }
+
+    public function isFavoritedBy(User $user){
+        return Favorite::has($this, $user);
     }
 
     public function scopeDraft($query){

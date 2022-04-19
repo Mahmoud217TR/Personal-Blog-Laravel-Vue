@@ -22,7 +22,7 @@ class PostController extends Controller
     }
 
     public function show(Post $post){
-        $post->with('comments','comments.users','user');
+        $post->with('comments','comments.users','user','likers');
         return view('post.show',compact('post'));
     }
 

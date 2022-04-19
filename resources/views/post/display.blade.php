@@ -19,14 +19,21 @@
                 </p>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-md-10 col-6 justify-content-md-center ps-md-0">
-                <a href="{{ route('post.show',$post) }}" class="btn btn-primary m-2">View</a>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-md-8 col-6 d-flex justify-content-start-center ps-md-0">
+                @include('post.interactions')
                 @include('post.controls')
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-center">
+                <p class="text-end text-muted my-0 ms-2">
+                    {{ $post->likers->count() }} @choice('Like|Likes',$post->likers->count())
+                </p>
+                <p class="text-end text-muted my-0 ms-2">
+                    {{ $post->created_at }}
+                </p>
             </div>
         </div>
     </div>
-    <div class="card-footer text-muted">
-        {{ $post->created_at }}
-      </div>
 </div>
