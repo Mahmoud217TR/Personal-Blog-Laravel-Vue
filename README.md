@@ -18,6 +18,8 @@ This project is a simple CRUD bloger were you have an Admin who can post and use
 ![photo 5](/gallery/PB-5.png)
 ![photo 6](/gallery/PB-6.png)
 ![photo 7](/gallery/PB-7.png)
+![photo 8](/gallery/PB-8.png)
+![photo 9](/gallery/PB-9.png)
 
 ***
 
@@ -30,6 +32,8 @@ This project is a simple CRUD bloger were you have an Admin who can post and use
 * CKEditor for Posts & Comments.
 * Users & Admin can Update **their Own** Informations in profile.
 * Admin has a small dashboard.
+* Users & Admin can Like or Favorite a **Post**.
+* Users & Admin can Like a **Comment**.
 
 
 ## How to Start
